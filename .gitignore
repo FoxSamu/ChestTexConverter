@@ -1,0 +1,7 @@
+build
+out
+1.15
+1.14
+testobjs
+.gradle
+.idea
