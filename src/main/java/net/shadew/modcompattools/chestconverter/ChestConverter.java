@@ -38,6 +38,14 @@ public class ChestConverter {
         this(null, inDouble, null, outLeft, outRight);
     }
 
+    /**
+     * Converts a single chest image from the 1.14- format to the 1.15+ format, but also flips the back and front textures.
+     * This is one of the methods that calls the rest of the {@link ChestConverter} class.
+     *
+     * @param fromFolder The folder from which the images will be taken from.
+     * @param toFolder The folder in which the converted images will be placed in.
+     * @param name The name of the chest texture. This precedes the {@code .png} in the file name.
+     */
     public static void convertSingleWithFlip(File fromFolder, File toFolder, String name) {
         ChestConverter conv = new ChestConverter(
             new File(fromFolder, name + ".png"),
@@ -47,6 +55,14 @@ public class ChestConverter {
         conv.convert();
     }
 
+    /**
+     * Converts a single chest image from the 1.14- format to the 1.15+ format.
+     * This is one of the methods that calls the rest of the {@link ChestConverter} class.
+     *
+     * @param fromFolder The folder from which the images will be taken from.
+     * @param toFolder The folder in which the converted images will be placed in.
+     * @param name The name of the chest texture. This precedes the {@code .png} in the file name.
+     */
     public static void convertSingle(File fromFolder, File toFolder, String name) {
         new ChestConverter(
             new File(fromFolder, name + ".png"),
@@ -54,6 +70,15 @@ public class ChestConverter {
         ).convert();
     }
 
+    /**
+     * Converts a single chest image from the 1.14- format to the 1.15+ format.
+     * More specifically, the previous _double.png file will be converted into a {@code ..._left.png} file and a {@code ..._right.png} file.
+     * This is one of the methods that calls the rest of the {@link ChestConverter} class.
+     *
+     * @param fromFolder The folder from which the images will be taken from.
+     * @param toFolder The folder in which the converted images will be placed in.
+     * @param name The name of the chest texture. This precedes the {@code _double.png} in the file name.
+     */
     public static void convertDouble(File fromFolder, File toFolder, String name) {
         new ChestConverter(
             new File(fromFolder, name + "_double.png"),
@@ -62,6 +87,15 @@ public class ChestConverter {
         ).convert();
     }
 
+    /**
+     * Converts a single and double chest images from the 1.14- format to the 1.15+ format.
+     * This method takes the single and double images with the same name and runs them through the
+     * {@code convertSingle} and {@code convertDouble} methods.
+     *
+     * @param fromFolder The folder from which the images will be taken from.
+     * @param toFolder The folder in which the converted images will be placed in.
+     * @param name The name of the chest texture. This precedes the {@code .png} and {@code _double.png} in the file names.
+     */
     public static void convertBoth(File fromFolder, File toFolder, String name) {
         convertSingle(fromFolder, toFolder, name);
         convertDouble(fromFolder, toFolder, name);
